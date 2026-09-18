@@ -1,26 +1,153 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --radius: 0.75rem;
+
+  --background: #f7f2ea;
+  --foreground: #2f2521;
+
+  --card: #fffaf3;
+  --card-foreground: #2f2521;
+
+  --popover: #fffaf3;
+  --popover-foreground: #2f2521;
+
+  --primary: #6b1f2a;
+  --primary-foreground: #fffaf3;
+
+  --secondary: #172a3a;
+  --secondary-foreground: #f7f2ea;
+
+  --muted: #e9dece;
+  --muted-foreground: #78695f;
+
+  --accent: #d8c7b0;
+  --accent-foreground: #3a2a24;
+
+  --destructive: #9b2c2c;
+  --destructive-foreground: #fffaf3;
+
+  --border: #d8c7b0;
+  --input: #d8c7b0;
+  --ring: #6b1f2a;
+}
+
+.dark {
+  --background: #0e1b26;
+  --foreground: #f7f2ea;
+
+  --card: #172a3a;
+  --card-foreground: #f7f2ea;
+
+  --popover: #172a3a;
+  --popover-foreground: #f7f2ea;
+
+  --primary: #b85c6b;
+  --primary-foreground: #fffaf3;
+
+  --secondary: #efe5d5;
+  --secondary-foreground: #172a3a;
+
+  --muted: #263847;
+  --muted-foreground: #c7b9ac;
+
+  --accent: #3a2a24;
+  --accent-foreground: #f7f2ea;
+
+  --destructive: #c94a4a;
+  --destructive-foreground: #fffaf3;
+
+  --border: #3a4a57;
+  --input: #3a4a57;
+  --ring: #b85c6b;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: Arial, Helvetica, sans-serif;
   }
 }
+@media print {
+  body {
+    background: white !important;
+  }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  nav,
+  header,
+  button,
+  a[href="/dashboard"],
+  a[href*="/jobs/"] {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+  }
+
+  .bg-card {
+    box-shadow: none !important;
+  }
+
+  .border {
+    border: none !important;
+  }
+
+  .shadow-sm {
+    box-shadow: none !important;
+  }
+
+  .bg-background {
+    background: white !important;
+  }
+
+  .text-secondary {
+    color: black !important;
+  }
+
+  .text-muted-foreground {
+    color: #444 !important;
+  }
 }
