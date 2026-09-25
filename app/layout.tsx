@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Career Researcher",
+  title: "RolePilot",
   description:
-    "Turn job descriptions into skill gaps, tailored resumes, projects, and interview preparation.",
+    "AI-powered job research, preparation, projects, resumes, and adaptive interviews.",
 };
 
 export default function RootLayout({
